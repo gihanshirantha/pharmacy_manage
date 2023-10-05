@@ -18,4 +18,29 @@ export const createMedicine = async (req, res) => {
       });
     }
   };
+
+  //update medicine product
+  export const updateMedicine = async (req, res) => {
+    const id = req.params.id;
   
+    try {
+      const updatedMedicine = await Medicine.findByIdAndUpdate(
+        id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+  
+      res.status(200).json({
+        success: true,
+        message: "successfully updated",
+        data: updatedMedicine,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: true,
+        message: "Not updated",
+      });
+    }
+  };
