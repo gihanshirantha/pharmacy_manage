@@ -44,3 +44,39 @@ export const createMedicine = async (req, res) => {
       });
     }
   };
+
+//Delete medicine product
+export const deleteMedicine = async (req, res) => {
+    const id = req.params.id;
+    try {
+      await Medicine.findByIdAndDelete(id);
+  
+      res.status(200).json({
+        success: true,
+        message: "successfully deleted",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: true,
+        message: "Not deleted",
+      });
+    }
+  };
+
+//Get all Medicine products
+export const getAllMedicine = async (req, res) => {
+  try {
+    const medicine = await Medicine.find({});
+
+    res.status(200).json({
+      success: true,
+      message: "successful",
+      data: medicine,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "not found",
+    });
+  }
+};
