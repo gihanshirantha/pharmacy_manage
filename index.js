@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 
 import medicineRoute from "./routes/medicines.js";
 import customerRoute from './routes/customer.js'
+import userRoute from './routes/users.js'
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,7 @@ app.use(cors());
 
 app.use("/api/v1/medicine", medicineRoute);
 app.use("/api/v1/customer",customerRoute);
+app.use("/api/v1/user",userRoute)
 
 app.listen(port, () => {
   connect();
