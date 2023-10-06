@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  roll:{
+  role:{
     type:String,
     required: true,
   }
