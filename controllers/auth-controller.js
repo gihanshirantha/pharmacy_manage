@@ -19,7 +19,7 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      success: fales,
+      success: false,
       message: "Not created",
     });
   }
@@ -35,7 +35,7 @@ export const login = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        success: fales,
+        success: false,
         message: "User not found",
       });
     }
@@ -56,7 +56,7 @@ export const login = async (req, res) => {
       { expiresIn: "15d" }
     );
 
-    //set token in the brouser cookie
+    //set token in the browser cookie
     res
       .cookie("accessToken", token, {
         httpOnly: true,

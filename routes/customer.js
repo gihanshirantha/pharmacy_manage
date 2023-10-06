@@ -4,11 +4,12 @@ import {
   deleteCustomer,
   updateCustomer,
 } from "../controllers/customer-controller.js";
+import { verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 //create new customer
-router.post("/", createCustomer);
+router.post("/",verifyUser, createCustomer);
 
 //Update Customer details
 router.put("/:id", updateCustomer);
