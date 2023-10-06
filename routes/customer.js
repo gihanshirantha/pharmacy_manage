@@ -4,7 +4,7 @@ import {
   deleteCustomer,
   updateCustomer,
 } from "../controllers/customer-controller.js";
-import { verifyUser } from "../utils/verifyToken.js";
+import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
@@ -12,9 +12,9 @@ const router = express.Router();
 router.post("/",verifyUser, createCustomer);
 
 //Update Customer details
-router.put("/:id", updateCustomer);
+router.put("/:id",verifyUser, updateCustomer);
 
 //Delete Customer
-router.delete("/:id", deleteCustomer);
+router.delete("/:id",verifyAdmin, deleteCustomer);
 
 export default router;
