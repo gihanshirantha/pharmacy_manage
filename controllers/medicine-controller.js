@@ -80,3 +80,23 @@ export const getAllMedicine = async (req, res) => {
     });
   }
 };
+
+//get single Medicine Product
+
+export const getSingleMedicine = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const medicine = await Medicine.findById(id);
+
+    res.status(200).json({
+      success: true,
+      message: "detected",
+      data: medicine,
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: true,
+      message: "Not found",
+    });
+  }
+};

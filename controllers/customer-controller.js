@@ -62,3 +62,41 @@ export const deleteCustomer = async (req, res) => {
     });
   }
 };
+
+//Get all Customer
+export const getAllCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.find({});
+
+    res.status(200).json({
+      success: true,
+      message: "successful",
+      data: customer,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "not found",
+    });
+  }
+};
+
+//get single Customer
+
+export const getSingleCustomer = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const customer = await Customer.findById(id);
+
+    res.status(200).json({
+      success: true,
+      message: "detected",
+      data: customer,
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: true,
+      message: "Not found",
+    });
+  }
+};

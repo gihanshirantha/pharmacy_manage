@@ -1,21 +1,23 @@
 import express from "express";
-import { createMedicine, deleteMedicine, getAllMedicine, updateMedicine } from "../controllers/medicine-controller.js";
-import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
+import { createMedicine, deleteMedicine, getAllMedicine, getSingleMedicine, updateMedicine } from "../controllers/medicine-controller.js";
+
 
 const router=express.Router();
 
 //create new Mediccine Product
-router.post("/",verifyUser,createMedicine);
+router.post("/",createMedicine);
 
 //update medicine product
-router.put("/:id",verifyUser, updateMedicine);
+router.put("/:id", updateMedicine);
 
 //delete medicine product
-router.delete("/:id",verifyAdmin, deleteMedicine);
+router.delete("/:id", deleteMedicine);
 
 //get all medicine products
-router.get("/",verifyUser,getAllMedicine);
+router.get("/",getAllMedicine);
 
+//get single medicine product
+router.get("/:id",getSingleMedicine);
 
 
 export default router;
